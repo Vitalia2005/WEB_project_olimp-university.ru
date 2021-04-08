@@ -1,0 +1,35 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url(../fonts/Montserrat.ttf);
+}
+
+
+.msu_and_text {
+    display: flex;
+    justify-content: space-between;
+    background: #F9F3EF;
+}
+
+.msu_and_text img {
+    clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 0% 100%);
+    width: 55%;
+}
+
+.text_postypai {
+    font-family: "Montserrat", sans-serif;
+    margin-top: 20px;
+    font-size: 41px;
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    margin-right: 170px;
+    line-height: 0.8em;
+}
+
+
+.text2 {
+    font-size: 16px;
+    font-family: "Montserrat SemiBold", sans-serif;
+    line-height: 0.8em;
+    margin-top: 15px;
+}
