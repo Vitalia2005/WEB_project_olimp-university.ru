@@ -1,11 +1,26 @@
-.checkselect {
-    position: relative;
-    display: inline-block;
-    min-width: 200px;
-    text-align: left;
-    margin-top: 20px;
-    margin-left: 50px;
+@font-face {
+    font-family: "Montserrat";
+    src: url(../fonts/Montserrat.ttf);
 }
+
+#select1 {
+    display: inline-block;
+    min-width: 220px;
+    text-align: left;
+    position: absolute;
+    left: 71vw;
+    top: 16vw;
+}
+
+#select2 {
+    display: inline-block;
+    min-width: 220px;
+    text-align: left;
+    position: absolute;
+    left: 71vw;
+    top: 24vw;
+}
+
 
 .checkselect-control {
     position: relative;
@@ -102,4 +117,34 @@
     height: 44px !important;
     color: black;
     font-size: 20px;
+}
+
+
+.table {
+    width: 800px;
+    margin-left: 50px;
+}
+
+.stepen_diploma {
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    text-align-last: center;
+    border-color: #d5d5d5;
+}
+
+.check_mark {
+    transform:scale(1.8);
+    cursor:pointer;
+    margin-left: 18px;
+}
+
+.something_text {
+    line-height: 0.9em;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: "Montserrat SemiBold", sans-serif;
+    font-size: 27px;
+    text-align: center;
 }

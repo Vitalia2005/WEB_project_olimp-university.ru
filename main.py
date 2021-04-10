@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect
+from data.create_perechen import get_subject_and_olymp
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'olympvita-university-Wqn7RC8}vysS'
@@ -11,7 +12,8 @@ def main():
 
 @app.route('/privileges')
 def privileges():
-    return render_template('privileges.html')
+    data = get_subject_and_olymp()
+    return render_template('privileges.html', data=data[0], all_olymps=data[1])
 
 
 if __name__ == '__main__':

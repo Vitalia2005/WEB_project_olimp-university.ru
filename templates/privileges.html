@@ -1,95 +1,65 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- Только CSS -->
-<link rel="stylesheet" href="../static/css/privileges.css">
+    <!-- Только CSS -->
+    <link rel="stylesheet" href="../static/css/privileges.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
 
-<div class="checkselect">
-    <label><input type="checkbox" name="brands[]" value="1">Астрономия (3)</label>
-    <label><input type="checkbox" name="brands[]" value="2">Биология (9)</label>
-    <label><input type="checkbox" name="brands[]" value="3">География (8)</label>
-    <label><input type="checkbox" name="brands[]" value="4">Геология (2)</label>
-    <label><input type="checkbox" name="brands[]" value="5">Гуманитарные и социальные науки (3)</label>
-    <label><input type="checkbox" name="brands[]" value="6">Естественные науки (3)</label>
-    <label><input type="checkbox" name="brands[]" value="7">Журналистика (5)</label>
-    <label><input type="checkbox" name="brands[]" value="8">Инженерные науки (2)</label>
-    <label><input type="checkbox" name="brands[]" value="9">Иностранный язык (13)</label>
-    <label><input type="checkbox" name="brands[]" value="10">Информатика (13)</label>
-    <label><input type="checkbox" name="brands[]" value="11">История (16)</label>
-    <label><input type="checkbox" name="brands[]" value="12">Лингвистика (2)</label>
-    <label><input type="checkbox" name="brands[]" value="13">Литература (7)</label>
-    <label><input type="checkbox" name="brands[]" value="14">Математика (27)</label>
-    <label><input type="checkbox" name="brands[]" value="15">Обществознание (12)</label>
-    <label><input type="checkbox" name="brands[]" value="16">Политология (3)</label>
-    <label><input type="checkbox" name="brands[]" value="17">Право (7)</label>
-    <label><input type="checkbox" name="brands[]" value="18">Программирование (2)</label>
-    <label><input type="checkbox" name="brands[]" value="19">Психология (2)</label>
-    <label><input type="checkbox" name="brands[]" value="20">Рисунок (2)</label>
-    <label><input type="checkbox" name="brands[]" value="21">Робототехника (2)</label>
-    <label><input type="checkbox" name="brands[]" value="22">Русский язык (8)</label>
-    <label><input type="checkbox" name="brands[]" value="23">Социология (3) (2)</label>
-    <label><input type="checkbox" name="brands[]" value="24">Теория и история музыки (2)</label>
-    <label><input type="checkbox" name="brands[]" value="25">Техника и технологии (2)</label>
-    <label><input type="checkbox" name="brands[]" value="26">Физика (25)</label>
-    <label><input type="checkbox" name="brands[]" value="27">Филология (5)</label>
-    <label><input type="checkbox" name="brands[]" value="28">Философия (2)</label>
-    <label><input type="checkbox" name="brands[]" value="29">Финансовая грамотность (4)</label>
-    <label><input type="checkbox" name="brands[]" value="30">Химия (15)</label>
-    <label><input type="checkbox" name="brands[]" value="31">Экономика (8)</label>
-    <label><input type="checkbox" name="brands[]" value="32">Остальные (65)</label>
-</div>
-<script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
-<script>
-    var checked_array = [];
-    (function ($) {
-        function setChecked(target) {
-            var checked_array = $(target).find('input[type="checkbox"]').map(x => x.is(':checked'));
-            window['checked_array'] = checked_array;
-            var checked = $(target).find("input[type='checkbox']:checked").length;
-            if (checked) {
-                $(target).find('select option:first').html('Выбрано: ' + checked);
-            } else {
-                $(target).find('select option:first').html('Выберите предметы');
-            }
-        }
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 
-        $.fn.checkselect = function () {
-            this.wrapInner('<div class="checkselect-popup"></div>');
-            this.prepend(
-                '<div class="checkselect-control">' +
-                '<select class="form-control"><option></option></select>' +
-                '<div class="checkselect-over"></div>' +
-                '</div>'
-            );
+    <p class="something_text">Выбери олимпиады, которые ты выиграл, укажи степень диплома и
+        узнай в каких ВУЗы и на каких специальностях у тебя есть льготы</p>
+    <div class="table_and_checked">
+        <table id="table1" class="table table-bordered table-hover table-responsive">
+            <thead>
+            <tr>
+                <th class="w-5"></th>
+                <th class="w-300">Название олимпиады</th>
+                <th class="w-20">Номер в Перечне</th>
+                <th class="w-50" style="text-align: center;">Профиль</th>
+                <th class="w-20">Уровень олимпиады</th>
+                <th class="w-20">Степень диплома</th>
+            </tr> <!--ряд с ячейками заголовков-->
+            </thead>
+            <tbody>
+            {% for ik in data %}
+                <tr>
+                <td style="width: 100%;"><input type="checkbox" class="check_mark"></td>
+                    {% for el in ik %}
+                        {% if loop.index != 1 %}
+                        <td style="text-align: center;">{{ el }}</td>
+                        {% else %}
+                        <td>{{ el }}</td>
+                        {% endif %}
+                    {% endfor %}
+                    <td>
+                        <select class="stepen_diploma">
+                            <option value=1>1</option>
+                            <option value=1>2</option>
+                            <option value=3>3</option>
+                        </select>
+                    </td>
+                </tr> <!--ряд с ячейками тела таблицы-->
+            {% endfor %}
+            </tbody>
+        </table>
 
-            this.each(function () {
-                setChecked(this);
-            });
-            this.find('input[type="checkbox"]').click(function () {
-                setChecked($(this).parents('.checkselect'));
-            });
+        <div class="checkselect" id="select1">
+            {% for el in all_olymps %}
+                <label><input type="checkbox" name="brands[]" value={{ loop.index }}>{{ el }}</label>
+            {% endfor %}
+        </div>
+        <div class="checkselect" id="select2">
+            <label><input type="checkbox" name="brands[]" value=1>1</label>
+            <label><input type="checkbox" name="brands[]" value=2>2</label>
+            <label><input type="checkbox" name="brands[]" value=3>3</label>
+        </div>
 
-            this.parent().find('.checkselect-control').on('click', function () {
-                $popup = $(this).next();
-                $('.checkselect-popup').not($popup).css('display', 'none');
-                if ($popup.is(':hidden')) {
-                    $popup.css('display', 'block');
-                    $(this).find('select').focus();
-                } else {
-                    $popup.css('display', 'none');
-                }
-            });
+    </div>
 
-            $('html, body').on('click', function (e) {
-                if ($(e.target).closest('.checkselect').length == 0) {
-                    $('.checkselect-popup').css('display', 'none');
-                }
-            });
-        };
-    })(jQuery);
 
-    $('.checkselect').checkselect();
-</script>
-
+    <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+    <script src="../static/js/privileges.js"></script>
 
 {% endblock %}
