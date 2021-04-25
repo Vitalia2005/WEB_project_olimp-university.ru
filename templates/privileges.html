@@ -3,63 +3,74 @@
 {% block content %}
     <!-- Только CSS -->
     <link rel="stylesheet" href="../static/css/privileges.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="../static/filter_lib/lib.css">
 
-    <script type="text/javascript" charset="utf8"
-            src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
-
-    <p class="something_text">Выбери олимпиады, которые ты выиграл, укажи степень диплома и
-        узнай в каких ВУЗы и на каких специальностях у тебя есть льготы</p>
-    <div class="table_and_checked">
-        <table id="table1" class="table table-bordered table-hover table-responsive">
-            <thead>
-            <tr>
-                <th class="w-5"></th>
-                <th class="w-300">Название олимпиады</th>
-                <th class="w-20">Номер в Перечне</th>
-                <th class="w-50" style="text-align: center;">Профиль</th>
-                <th class="w-20">Уровень олимпиады</th>
-                <th class="w-20">Степень диплома</th>
-            </tr> <!--ряд с ячейками заголовков-->
-            </thead>
-            <tbody>
-            {% for ik in data %}
-                <tr>
-                <td style="width: 100%;"><input type="checkbox" class="check_mark"></td>
-                    {% for el in ik %}
-                        {% if loop.index != 1 %}
-                        <td style="text-align: center;">{{ el }}</td>
-                        {% else %}
-                        <td>{{ el }}</td>
-                        {% endif %}
-                    {% endfor %}
-                    <td>
-                        <select class="stepen_diploma">
-                            <option value=1>1</option>
-                            <option value=1>2</option>
-                            <option value=3>3</option>
-                        </select>
-                    </td>
-                </tr> <!--ряд с ячейками тела таблицы-->
-            {% endfor %}
-            </tbody>
-        </table>
-
-        <div class="checkselect" id="select1">
-            {% for el in all_olymps %}
-                <label><input type="checkbox" name="brands[]" value={{ loop.index }}>{{ el }}</label>
-            {% endfor %}
+    <div class="something_text" id="something_text"><h3>Выбери олимпиады, которые ты выиграл, укажи степень диплома и
+        узнай в каких ВУЗах и на каких специальностях у тебя есть льготы</h3></div>
+    <div class="all" id="all">
+        <div class="table_and_checked">
+            <div class="checked_and_button">
+                <div id='container'></div>
+                <button class="shine-button" id="button_next">Дальше</button>
+            </div>
+            <table id="table" border=1>
+                <thead>
+                <tr style="height: 80px">
+                    <th class="col1 center_td"></th>
+                    <th class="col2 center_td">Название олимпиады</th>
+                    <th class="col3 center_td">Номер в Перечне</th>
+                    <th class="col4 center_td">Предметы</th>
+                    <th class="col5 center_td">Уровень</th>
+                    <th class="col6 center_td">Степень диплома</th>
+                    <th class="col7 center_td">Класс, за который получен результат</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for ik in all_olymps %}
+                    {% set a = [ik[0], ik[1], ik[3], ik[4],  ik[5]] %}
+                    {% set ind = loop.index %}
+                    <tr class="tr">
+                        <td class="center_td">
+                            <input type="checkbox" class="check_mark" id=check_{{ ind }}>
+                        </td>
+                        {% for el in a %}
+                            {% if loop.index != 1 %}
+                                {% if loop.index != 2 %}
+                                    <td class="center_td">{{ el }}</td>
+                                {% else %}
+                                    <td class="name_olympiad" id=name_{{ ind }}>{{ el }}</td>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        <td style="vertical-align: middle; text-align: center;">
+                            <select class="stepen_diploma" id=stepen_{{ ind }}>
+                                <option value=1>1</option>
+                                <option value=2>2</option>
+                                <option value=3>3</option>
+                            </select>
+                        </td>
+                        <td style="vertical-align: middle; text-align: center;">
+                            <select class="olymp_class" id=class_{{ loop.index }}>
+                                <option value=11>11</option>
+                                <option value=10>10</option>
+                                <option value=9>9</option>
+                            </select>
+                        </td>
+                    </tr> <!--ряд с ячейками тела таблицы-->
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
-        <div class="checkselect" id="select2">
-            <label><input type="checkbox" name="brands[]" value=1>1</label>
-            <label><input type="checkbox" name="brands[]" value=2>2</label>
-            <label><input type="checkbox" name="brands[]" value=3>3</label>
-        </div>
-
     </div>
 
-
-    <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
-    <script src="../static/js/privileges.js"></script>
+    <script src='../static/filter_lib/jquery.js'></script>
+    <script>
+        let levels = {{ levels|safe }};
+        let subjects = {{ subjects|safe }};
+        let all_olymps = {{ all_olymps|tojson }};
+        let profils = {{ profils|tojson }};
+    </script>
+    <script src='../static/js/privileges.js'></script>
+    <script src='../static/filter_lib/lib.js'></script>
 
 {% endblock %}

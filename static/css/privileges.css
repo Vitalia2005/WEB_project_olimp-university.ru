@@ -3,148 +3,199 @@
     src: url(../fonts/Montserrat.ttf);
 }
 
-#select1 {
-    display: inline-block;
-    min-width: 220px;
-    text-align: left;
-    position: absolute;
-    left: 71vw;
-    top: 16vw;
+@font-face {
+    font-family: "Montserrat SemiBold";
+    src: url(../fonts/Montserrat_SemiBold.ttf);
 }
 
-#select2 {
-    display: inline-block;
-    min-width: 220px;
-    text-align: left;
-    position: absolute;
-    left: 71vw;
-    top: 24vw;
+@font-face {
+    font-family: "MyriadBold";
+    src: url(../fonts/MyriadBold.otf);
 }
 
-
-.checkselect-control {
-    position: relative;
-    padding: 0 !important;
+@font-face {
+    font-family: "MyriadRegular";
+    src: url(../fonts/MyriadRegular.otf);
 }
 
-.checkselect-control select {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    margin: 0;
-    padding-left: 5px;
-    height: 30px;
+table {
+    width: 80%;
+    margin-left: 35px;
+    margin-bottom: 50px;
+    font-size: 17px;
+    border-collapse: collapse;
+    border: 1px solid #c5c5c5;
 }
 
-.checkselect-over {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    cursor: pointer;
+.center_td {
+    vertical-align: middle;
+    text-align: center;
 }
 
-.checkselect-popup {
-    display: none;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: auto;
-    max-height: 200px;
-    position: absolute;
-    top: 100%;
-    left: 0px;
-    border: 1px solid #dadada;
-    border-top: none;
-    background: #fff;
-    z-index: 9999;
-    overflow: auto;
-    user-select: none;
+.padding_td {
+    padding: 10px;
 }
 
-.checkselect label {
-    position: relative;
-    display: block;
-    margin: 0;
-    padding: 4px 6px 4px 25px;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 1.1;
-    cursor: pointer;
+.col1 {
+    width: 50px;
 }
 
-.checkselect-popup input {
-    position: absolute;
-    top: 5px;
-    left: 8px;
-    margin: 0 !important;
-    padding: 0;
+.col2 {
+    width: 250px;
 }
 
-.checkselect-popup label:hover {
-    background: #03a2ff;
-    color: #fff;
+.col3 {
+    width: 100px;
 }
 
-.checkselect-popup fieldset {
-    display: block;
-    margin: 0;
-    padding: 0;
-    border: none;
+.col4 {
+    width: 100px;
 }
 
-.checkselect-popup fieldset input {
-    left: 15px;
+.col5 {
+    width: 100px;
 }
 
-.checkselect-popup fieldset label {
-    padding-left: 32px;
+.col6 {
+    width: 100px;
 }
 
-.checkselect-popup legend {
-    display: block;
-    margin: 0;
-    padding: 5px 8px;
-    font-weight: 700;
-    font-size: 1em;
-    line-height: 1.1;
+.col7 {
+    width: 100px;
 }
 
-
-.checkselect-control select {
-    height: 44px !important;
-    color: black;
-    font-size: 20px;
+.tr:hover {
+    background: rgba(213, 213, 213, 0.24);
 }
 
-
-.table {
-    width: 800px;
-    margin-left: 50px;
+.name_olympiad {
+    padding: 15px;
 }
 
-.stepen_diploma {
+.stepen_diploma, .olymp_class {
     border-radius: 5px;
-    width: 100%;
+    width: 70%;
     text-align: center;
     text-align-last: center;
     border-color: #d5d5d5;
 }
 
 .check_mark {
-    transform:scale(1.8);
-    cursor:pointer;
-    margin-left: 18px;
+    transform: scale(1.8);
+    cursor: pointer;
 }
 
 .something_text {
-    line-height: 0.9em;
-    margin-left: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-family: "Montserrat SemiBold", sans-serif;
-    font-size: 27px;
+    line-height: 1.2em;
+    font-family: "Montserrat", sans-serif;
+    font-size: 23px;
+    margin: 40px 110px 20px 100px;
+}
+
+h3 {
+    letter-spacing: 1px;
+    width: 100%;
+    position: relative;
+    display: inline-block;
+}
+
+.something_text h3 {
     text-align: center;
+    padding-bottom: 10px;
+}
+
+.something_text h3:before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 40%;
+    margin-left: -25%;
+    width: 70%;
+    height: 2px;
+    background: #afafaf;
+}
+
+.something_text h3:after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 45%;
+    margin-left: -15%;
+    width: 40%;
+    height: 2px;
+    background: #afafaf;
+}
+
+.table_and_checked {
+    display: flex;
+    flex-direction: column;
+}
+
+.checked_and_button {
+    display: flex;
+    flex-direction: row;
+}
+
+.check_mark2 {
+    transform: scale(1.2);
+    cursor: pointer;
+    margin-left: 1px;
+}
+
+#p1 {
+    margin-left: 32px;
+    font-size: 20px;
+}
+
+.levels_and_text {
+    line-height: 0.8em;
+}
+
+#container {
+    margin-left: 30px;
+    margin-bottom: 30px;
+    height: 100px;
+    width: 570px;
+}
+
+.shine-button {
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 30px;
+    margin: 10px 20px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #d5d5d5;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    color: #151719;
+    transition: .2s ease-in-out;
+}
+
+.shine-button:before {
+    content: "";
+    background: linear-gradient(90deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .5));
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: -8px;
+    left: -75px;
+    transform: skewX(-45deg);
+}
+
+.shine-button:hover {
+    text-decoration: none;
+    background: rgba(213, 213, 213, 0.6);
+    color: #151719;
+}
+
+.shine-button:hover:before {
+    left: 150px;
+    transition: .5s ease-in-out;
+}
+
+.shine-button {
+    background-color: white;
+    margin-top: 50px;
+    height: 26%;
 }
