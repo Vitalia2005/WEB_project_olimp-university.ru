@@ -1,11 +1,7 @@
 import sqlite3
-import flask
-
 from data import db_session
 from api import olymps_api
-from data.olympiads import Olymp
-from flask import Flask, render_template, redirect
-from data.create_perechen import get_subject_and_olymp
+from flask import Flask, render_template
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'olympvita-university-Wqn7RC8}vysS'
